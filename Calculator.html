@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        var operation="";
+        var result;
+        var val1="";
+        var val2="";
+        $(document).ready(function(){
+            $(".number").click(function(){
+                if (val1==""||operation=="") {
+                    val1=val1+$(this).html();   
+                    $("#second").val(val2);
+                    $("#sign").val(operation);
+                    $("#equal").val(result);
+                }
+                else
+                val2=val2+$(this).html();               
+                                   
+                
+                $("#first").val(val1); 
+                $("#second").val(val2);                               
+            });
+
+            $(".operation").click(function(){
+                operation=$(this).html();
+                $("#sign").val(operation);
+                                
+            });
+
+            $(".calculate").click(function(){  
+                val1=Number(val1);  
+                val2=Number(val2);            
+                if (operation=="+") {
+                    result=val1+val2; 
+                } 
+                else if(operation=="-"){
+                    result=val1-val2;
+                }
+                else if(operation=="*"){
+                    result=val1*val2;
+                }
+                else if(operation=="/"){
+                    result=val1/val2;
+                }
+                
+                $("#equal").val(result);
+                operation="";
+                val1="";
+                val2="";
+                result="";
+            });
+        });
+        </script>
+        <style>
+            html{
+                background-color: wheat;
+            }
+            p[id="title"]{
+                font-size: 56px;
+                color: brown;                
+            }
+            button{
+                color: white; 
+                position: relative; 
+                border: 1px solid gray;
+                background-color: rgb(247, 129, 129); 
+                font-size: 24px;
+                padding: 12px 28px; 
+                border-radius: 12px;   
+                opacity: 0.6;
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);   
+            }
+            button:active {
+                box-shadow: 0 5px #666;
+                transform: translateY(4px);
+            }
+            button:hover {opacity: 1}
+            button[target="1"] {
+             margin-left: 50px;
+            }
+            input[id="first"] {
+                 font-size: 24px;
+                 color: white;
+                 text-align:center;
+                 background-color: teal;
+                 width: 5%;
+                 margin-left: 20%;
+                 border-radius: 12px; 
+                 padding: 12px 28px; 
+            }
+            input[id="sign"] {
+                 font-size: 24px;
+                 color: white;
+                 text-align:center;
+                 background-color: teal;
+                 width: 5%;
+                 margin-left: 5%;
+                 border-radius: 12px; 
+                 padding: 12px 28px; 
+            }
+            input[id="second"] {
+                 font-size: 24px;
+                 color: white;
+                 text-align:center;
+                 background-color: teal;
+                 width: 5%;
+                 margin-left: 5%;
+                 border-radius: 12px; 
+                 padding: 12px 28px; 
+            }
+            input[id="equal"] {
+                 font-size: 24px;
+                 color: white;
+                 text-align:center;
+                 background-color: teal;
+                 width: 5%;
+                 margin-left: 5%;
+                 border-radius: 12px; 
+                 padding: 12px 28px; 
+            }
+        </style>
+</head>
+<body>
+    <p id="title" align="center">Calculator</p>
+    <input id="first" value="" readonly>
+    <input id="sign" value="" readonly>
+    <input id="second" value="" readonly>
+    <input id="equal" value="" readonly><br><br>
+<center>
+    <div>
+        <button class="number">1</button>
+        <button class="number">2</button>
+        <button class="number">3</button>
+    </div>
+    <div>
+        <button class="number">4</button>
+        <button class="number">5</button>
+        <button class="number">6</button>
+    </div>
+    <div>        
+    <button class="number">7</button>
+    <button class="number">8</button>
+    <button class="number">9</button>
+    </div>
+</center>
+    <button class="operation">+</button>
+    <button class="operation">-</button>
+    <button class="operation">*</button>
+    <button class="operation">/</button>
+    <button class="calculate">=</button>
+</body>
+</html>
